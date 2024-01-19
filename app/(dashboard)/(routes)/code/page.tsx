@@ -4,7 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 import Heading from '@/components/heading';
 import ReactMarkdown from "react-markdown";
-import { Code} from 'lucide-react';
+import { Code } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "./constants";
@@ -41,7 +41,7 @@ const CodePage = () => {
       const newMessages = [...messages, userMessage];
 
       const response = await axios.post('/api/code', { messages: newMessages });
-      setMessages((current) => [...current,  response.data, userMessage]);
+      setMessages((current) => [...current, response.data, userMessage]);
 
       form.reset();
     } catch (error: any) {
@@ -90,7 +90,7 @@ const CodePage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="Simple toggle button using react hooks." 
+                        placeholder="Simple toggle button using react hooks."
                         {...field}
                       />
                     </FormControl>
@@ -122,7 +122,7 @@ const CodePage = () => {
                 )}
               >
 
-                {message.role === "user" ? <UserAvatar/> : <BotAvatar/>}
+                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
                 <ReactMarkdown components={{
                   pre: ({ node, ...props }) => (
                     <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
