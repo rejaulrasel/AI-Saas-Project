@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Code, Image, MessageSquare, Music, Video } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
+
 
 const tools = [
   {
@@ -45,6 +47,8 @@ const tools = [
 ]
 
 const DashboardPage = () => {
+  const user = useUser();
+  console.log(user);
   const router = useRouter();
   return (
     <div>
