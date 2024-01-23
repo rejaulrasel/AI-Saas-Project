@@ -24,6 +24,7 @@ export const ProModal = () => {
   const proModal = useProModal();
   const [loading, setLoading] = useState(false);
 
+
   const onSubscribe = async () => {
     try {
       setLoading(true);
