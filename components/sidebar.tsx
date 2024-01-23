@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { FreeCounter } from "@/components/free-counter";
+
 import { usePathname } from "next/navigation";
 
 const montserrat = Montserrat({
@@ -54,9 +56,15 @@ const routes = [
         icon: Settings,
         href: "/settings",
     },
-]
+];
 
-const Sidebar = () => {
+interface SidebarProps{
+    apiLimitCount: number;
+};
+
+const Sidebar = ({
+    apiLimitCount = 0
+}: SidebarProps) => {
     const pathname = usePathname()
     return (
         <div className="space-y-4 py-4 flex flex-col h-full text-white bg-[#111222]">
@@ -86,6 +94,9 @@ const Sidebar = () => {
                     ))}
                 </div>
             </div>
+            <FreeCounter
+        apiLimitCount={apiLimitCount} 
+        />
         </div>
     );
 };
