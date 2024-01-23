@@ -15,10 +15,13 @@ import { useState } from "react";
 import { ChatCompletionRequestMessage } from "openai";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 
 const MusicPage = () => {
   const router = useRouter();
+  const proModal = useProModal();
+
   const [music, setMusic] = useState<string>();
 
 
@@ -43,10 +46,9 @@ const MusicPage = () => {
 
       form.reset();
     } catch (error: any) {
-      //TODO: OPEN PRO MODAL
-
-
-      console.log(error);
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }
@@ -56,8 +58,8 @@ const MusicPage = () => {
   return (
     <div>
       <Heading
-        title="Music Generation"
-        description="Turn your prompt into music."
+        title="Audio Generation"
+        description="Turn your prompt into audio."
         icon={Music}
         iconColor="text-emerald-500"
         bgColor="bg-emerald-500/10"

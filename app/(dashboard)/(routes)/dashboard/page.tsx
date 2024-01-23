@@ -30,7 +30,7 @@ const tools = [
     href: '/video'
   },
   {
-    label: "Music Generation",
+    label: "Audio Generation",
     icon: Music,
     color: 'text-green-500',
     bgColor: 'bg-green-500/10',
