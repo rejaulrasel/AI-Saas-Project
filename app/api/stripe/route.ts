@@ -48,7 +48,7 @@ export async function GET() {
             },
             unit_amount: 1000,
             recurring: {
-              interval: "year"
+              interval: "month"
             }
           },
           quantity: 1,
