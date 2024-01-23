@@ -39,7 +39,7 @@ const ConversationPage = () => {
       const userMessage: ChatCompletionRequestMessage = { role: "user", content: values.prompt };
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post('https://aisaaspro.netlify.app/api/conversation', { messages: newMessages });
+      const response = await axios.post('/api/conversation', { messages: newMessages });
       setMessages((current) => [...current,  response.data, userMessage]);
 
       form.reset();

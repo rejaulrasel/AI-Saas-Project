@@ -1,6 +1,7 @@
 import Replicate from "replicate";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
 
 
 const replicate = new Replicate({
@@ -24,6 +25,11 @@ export async function POST(
     }
 
 
+    const freeTrial = await checkApiLimit();
+    if (!freeTrial) {
+      return new NextResponse("Free trial has expired. Please upgrade to pro.", { status: 403 });
+    }
+
 
 
     const response = await replicate.run(
@@ -34,6 +40,8 @@ export async function POST(
         }
       }
     );
+
+    await incrementApiLimit();
 
 
 
