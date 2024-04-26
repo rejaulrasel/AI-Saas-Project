@@ -68,6 +68,8 @@ export const Sidebar = ({
     isPro= false    
 }: SidebarProps) => {
     const pathname = usePathname()
+    console.log('this is from sidebar')
+
     return (
         <div className="space-y-4 py-4 flex flex-col h-full text-white bg-[#111222]">
             <div className="px-3 py-2 flex-1">
